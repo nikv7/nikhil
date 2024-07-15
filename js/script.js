@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
 
     setTimeout(() => {
         document.querySelector('.preloader').style.display = 'none';
-    }, 1000)
+    }, 1000);
 });
 
 // Portfolio Item Filter
@@ -20,18 +20,22 @@ const nav = document.querySelector('.nav'),
     allSection = document.querySelectorAll('.section'),
     totalSection = allSection.length;
 
-for (let i = 0; i < totalFilterBtn; i++) {
-    filterBtns[i].addEventListener('click', function () {
-        filterContainer.querySelector('.active').classList.remove('active');
-        portfolioItems[i].classList.add('active');
-        for (let j = 0; j < totalSection; j++) {
-            allSection[j].classList.remove('active');
+for (let i = 0; i < totalNavList; i++) {
+    const a = navList[i].querySelector('a');
+    a.addEventListener('click', function () {
+        // Remove active class from all navigation items
+        for (let j = 0; j < totalNavList; j++) {
+            navList[j].querySelector('a').classList.remove('active');
         }
-        if(i === 0){
-            document.querySelector('#home').classList.add('active');
-        }
+        // Add active class to the clicked navigation item
+        this.classList.add('active');
 
+        // Remove active class from all sections
+        for (let k = 0; k < totalSection; k++) {
+            allSection[k].classList.remove('active');
+        }
+        // Add active class to the corresponding section
+        const target = this.getAttribute('href').split('#')[1];
+        document.querySelector(`#${target}`).classList.add('active');
     });
 }
-
-
