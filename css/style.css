@@ -1038,6 +1038,7 @@ body.dark .shadow-dark {
     gap: 15px;
     flex-wrap: wrap;
     margin-top: 10px;
+    margin-bottom: 15px
 }
 
 .document-card {
